@@ -18,10 +18,10 @@ SELECT
     Email,
     TotalCompras
 FROM 
-    Clientes_Limpos
+    dados_limpos
 WHERE 
     TotalCompras > 1500.00
-    AND Cidade = 'Uberlandia';
+    AND Cidade = 'Uberlândia';
 
 
 -- Query 2: Clientes "Em Risco" (Churn Risk)
@@ -31,21 +31,21 @@ SELECT
     Email,
     DataUltimaCompra
 FROM 
-    Clientes_Limpos
+    dados_limpos
 WHERE 
-    DataUltimaCompra < DATE_SUB(CURDATE(), INTERVAL 90 DAY);
+    DataUltimaCompra < date('now', '-90 days');
 
 
 -- Query 3: Clientes Novos (Welcome Kit)
 -- Objetivo: Incluir na jornada de "Boas-Vindas" (cadastro nos últimos 30 dias).
-SELECT 
+SELECT
     ClienteID,
     Nome,
     Email
-FROM 
-    Clientes_Limpos
-WHERE 
-    DataCadastro >= DATE_SUB(CURDATE(), INTERVAL 30 DAY);
+FROM
+    dados_limpos
+WHERE
+    DataCadastro >= date('now', '-30 days');
 
 
 -- Query 4: Aniversariantes do Mês
@@ -56,7 +56,7 @@ SELECT
     Email,
     DataNascimento
 FROM
-    Clientes_Limpos
+    dados_limpos
 WHERE
-    MONTH(DataNascimento) = MONTH(CURDATE())
-    AND YEAR(DataNascimento) != 1900; -- Exclui os que não tinham data
+    strftime('%m', DataNascimento) = strftime('%m', 'now')
+    AND strftime('%Y', DataNascimento) != '1900';
