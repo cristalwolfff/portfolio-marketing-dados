@@ -10,9 +10,9 @@ Este repositório demonstra minhas habilidades práticas em Python e SQL aplicad
 
 Simular o processo completo de ETL (Extract, Transform, Load) e Segmentação de uma base de clientes, preparando os dados para campanhas personalizadas em plataformas como o Salesforce Marketing Cloud (SFMC).
 
-•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
+•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
 A "história" é a seguinte:
-•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
+•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
 
 ☆ Dados Brutos (dados_brutos.csv): Recebemos uma base de clientes despadronizada e com erros.
 
@@ -20,7 +20,7 @@ A "história" é a seguinte:
 
 ☆ Segmentação com SQL (segmentacao.sql): Usamos queries SQL para segmentar a base limpa (simulando uma Data Extension do SFMC) e criar audiências para campanhas.
 
-•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
+•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
 1. ETL com Python (simulacao_etl.py)
 
 O script Python (utilizando a biblioteca Pandas) é responsável por pegar a base de dados dados_brutos.csv e prepará-la para ser usada em campanhas.
@@ -45,7 +45,7 @@ Tratamento de valores ausentes (ex: data_nascimento nula).
 
 Exportação da base tratada para um novo arquivo: dados_limpos.csv.
 
-•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
+•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
 2. Segmentação com SQL (segmentacao.sql)
 
 As queries SQL abaixo demonstram como a base dados_limpos.csv (agora limpa e estruturada) seria consultada para criar segmentações de audiência.
