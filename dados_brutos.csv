@@ -1,0 +1,9 @@
+ClienteID,Nome,Email,Telefone,Cidade,DataCadastro,DataUltimaCompra,TotalCompras,DataNascimento
+1,Ana Silva,ana.silva@gmail..com,"(34) 99123-4567",uberlândia,2023-01-15,2025-10-10,1850.50,1990-05-15
+2,BRUNO COSTA,bruno@hotmail.com,"34 99876-5432",Uberlandia,2023-03-22,2025-05-01,750.00,1985-11-30
+3,Carla Moreira,carla.m@yahoo.com,"(11) 98765-1234",São Paulo,2023-05-30,2025-09-15,1200.00,
+4,Daniel Mendes,daniel.m@gmail.com,"(34) 99111-2233",uberlândia,2023-07-10,2024-01-20,350.75,1995-02-28
+5,Ana Silva,ana.silva@gmail..com,"(34) 99123-4567",uberlândia,2023-01-15,2025-10-10,1850.50,1990-05-15
+6,Felipe Barros,felipe@outlook.com,34995556677,Araguari,2024-02-18,2025-11-01,2300.00,2000-07-20
+7,Gabriela Lima,gabi_lima@gmail.com,,"São Paulo",2024-06-05,2025-08-05,500.20,1992-12-10
+8,Ricardo Alves,ricardo@yahoo.com,"(34) 98888-7777",Uberlandia,2024-11-01,2025-11-05,450.00,1988-03-17
