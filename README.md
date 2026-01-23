@@ -1,100 +1,120 @@
-# portfolio-marketing-dados
-Portfólio de projetos de simulação para Marketing. Demonstra um processo de ETL usando Python (Pandas) para limpar uma base de clientes e, em seguida, usa SQL (Queries) para criar segmentações de audiência, simulando um ambiente de DBM ou Salesforce Marketing Cloud (SFMC).
+# 🛡️ CRM Data Hygiene & Segmentation Pipeline
+*(Simulating a Salesforce Marketing Cloud Data Workflow)*
 
-꧁∙·▫ₒₒ▫ᵒᴼᵒ▫ₒₒ▫꧁ PORTFÓLIO DE SIMULAÇÃO: ETL e Segmentação para Marketing ꧂▫ₒₒ▫ᵒᴼᵒ▫ₒₒ▫·∙꧂
+![Python](https://img.shields.io/badge/ETL-Python_&_Pandas-3776AB?style=for-the-badge&logo=pandas&logoColor=white)
+![SQL](https://img.shields.io/badge/Query-SQL_Segmentation-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+![Focus](https://img.shields.io/badge/Focus-Data_Quality_&_CRM-00A1E0?style=for-the-badge&logo=salesforce&logoColor=white)
+
+> **"Garbage In, Garbage Out."**
+> A robust ETL (Extract, Transform, Load) simulation designed to sanitize raw customer data before ingestion into Marketing Automation platforms (like SFMC or HubSpot).
+
+---
+
+## 🎯 The Business Problem
+In real-world MarTech operations, data entry errors (typos, duplicates, invalid formats) ruin campaign performance. Sending emails to `gmal.com` or duplicating users damages domain reputation and inflates costs.
+
+**The Goal:** Build an automated pipeline that ingests "dirty" raw data, sanitizes it using Python, and structures it for high-value SQL segmentation.
+
+---
+
+## 🏗️ Architecture: The ETL Process
+
+### 1. Extract & Transform (Python/Pandas)
+The script `etl_pipeline.py` acts as the gatekeeper. It processes the raw CSV and applies strict validation rules:
+
+* **De-duplication:** Identifies and merges duplicate records based on unique identifiers (Email).
+* **String Normalization:** Standardizes naming conventions (Title Case) and email formats (lowercase) to ensure matching accuracy.
+* **Regex Validation:** Fixes common domain typos (e.g., auto-correcting `@gmil.com` to `@gmail.com`).
+* **Null Handling:** Imputes or flags missing critical data (like Birth Date) to prevent campaign errors.
+
+### 2. Load & Segment (SQL Strategy)
+Once the data is cleaned (loaded into `clean_customers.db`), we use SQL to build **Strategic Audiences**. This simulates creating **Data Extensions** in Salesforce Marketing Cloud.
+
+---
+
+## 📊 SQL Segmentation Strategy
+*Examples of high-impact queries used in this project:*
+
+### 💎 1. High-LTV Retention (VIPs)
+**Goal:** Invite top-tier local customers to an exclusive event.
+```sql
+SELECT CustomerID, Name, Email
+FROM Clean_Customers
+WHERE TotalSpend > 1500.00
+AND City = 'Uberlandia';
+
+```
+
+### 🚨 2. Churn Prevention (Win-Back)
+
+**Goal:** Trigger a re-engagement flow for users who haven't purchased in 90 days.
+
+```sql
+SELECT CustomerID, Email, LastPurchaseDate
+FROM Clean_Customers
+WHERE LastPurchaseDate < DATE_SUB(CURRENT_DATE, INTERVAL 90 DAY);
+
+```
+
+### 👋 3. Onboarding Cycle (New Users)
+
+**Goal:** Target users for the "Welcome Series" automation (Day 0-30).
+
+```sql
+SELECT CustomerID, Name, Email
+FROM Clean_Customers
+WHERE SignupDate >= DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY);
+
+```
+
+### 🎂 4. Contextual Personalization (Birthdays)
+
+**Goal:** Monthly automated delight campaign.
+
+```sql
+SELECT CustomerID, Name, Email
+FROM Clean_Customers
+WHERE MONTH(BirthDate) = MONTH(CURRENT_DATE);
+
+```
+
+---
+
+## 🚀 How to Run
+
+1. **Clone the repository:**
+```bash
+git clone [https://github.com/cristalwolfff/crm-data-pipeline.git](https://github.com/cristalwolfff/crm-data-pipeline.git)
+
+```
 
 
-Este repositório demonstra minhas habilidades práticas em Python e SQL aplicadas a um cenário comum de Marketing e CRM, alinhado aos requisitos de vagas de Analista de Marketing técnico.
+2. **Install Requirements:**
+```bash
+pip install pandas
 
-✧･ﾟ: *✧･ﾟ:* 　OBJETIVO DO PROJETO　 *:･ﾟ✧*:･ﾟ✧
+```
 
-Simular o processo completo de ETL (Extract, Transform, Load) e Segmentação de uma base de clientes, preparando os dados para campanhas personalizadas em plataformas como o Salesforce Marketing Cloud (SFMC).
 
-•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
-A "história" é a seguinte:
-•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
+3. **Run the ETL Script:**
+```bash
+python etl_simulation.py
 
-☆ Dados Brutos (dados_brutos.csv): Recebemos uma base de clientes despadronizada e com erros.
+```
 
-☆ ETL com Python (simulacao_etl.py): Usamos a biblioteca Pandas (Python) para limpar, transformar e carregar os dados em um formato limpo e pronto para uso.
 
-☆ Segmentação com SQL (segmentacao.sql): Usamos queries SQL para segmentar a base limpa (simulando uma Data Extension do SFMC) e criar audiências para campanhas.
+*(This will generate the `clean_data.csv` file)*
 
-•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
-1. ETL com Python (simulacao_etl.py)
+---
 
-O script Python (utilizando a biblioteca Pandas) é responsável por pegar a base de dados dados_brutos.csv e prepará-la para ser usada em campanhas.
+## 🛠️ Tech Stack
 
-► Processos realizados no script:
+* **Python (Pandas):** For data manipulation and cleaning.
+* **SQL:** For logic-based audience segmentation.
+* **Business Context:** CRM & Marketing Automation best practices.
 
-Extração: Carregamento dos dados do arquivo dados_brutos.csv.
+---
 
-► Transformação (Limpeza):
+*Developed by [Cristalwolf](https://github.com/cristalwolfff) // MarTech Engineer*
 
-Remoção de clientes duplicados (baseado no email).
-
-Padronização de strings (ex: e-mails em minúsculo, nomes com primeira letra maiúscula).
-
-Correção de erros de digitação comuns (ex: @gmail..com -> @gmail.com).
-
-Padronização de números de telefone (removendo caracteres como (, ), -).
-
-Tratamento de valores ausentes (ex: data_nascimento nula).
-
-► Carga (Load):
-
-Exportação da base tratada para um novo arquivo: dados_limpos.csv.
-
-•◌•◌•◌•◌•◌•◌•◌•★•◌•◌•◌•◌•◌•◌•◌••◌•◌•◌•◌•◌•◌•◌•
-2. Segmentação com SQL (segmentacao.sql)
-
-As queries SQL abaixo demonstram como a base dados_limpos.csv (agora limpa e estruturada) seria consultada para criar segmentações de audiência.
-
-► Exemplos de Queries:
-
--- Query 1: Clientes de Alto Valor (VIP) de Uberlândia
--- Objetivo: Enviar um convite para um evento local.
-SELECT 
-    ClienteID,
-    Nome,
-    Email
-FROM 
-    Clientes_Limpos
-WHERE 
-    TotalCompras > 1500.00
-    AND Cidade = 'Uberlandia';
-
--- Query 2: Clientes "Em Risco" (Não compram há mais de 90 dias)
--- Objetivo: Campanha de reengajamento com cupom de desconto.
-SELECT 
-    ClienteID,
-    Email,
-    DataUltimaCompra
-FROM 
-    Clientes_Limpos
-WHERE 
-    DataUltimaCompra < DATE_SUB(CURDATE(), INTERVAL 90 DAY);
-
--- Query 3: Clientes Novos (Cadastro nos últimos 30 dias)
--- Objetivo: Incluir na jornada de "Boas-Vindas" (Welcome Kit).
-SELECT 
-    ClienteID,
-    Nome,
-    Email
-FROM 
-    Clientes_Limpos
-WHERE 
-    DataCadastro >= DATE_SUB(CURDATE(), INTERVAL 30 DAY);
-
--- Query 4: Aniversariantes do Mês
--- Objetivo: Enviar campanha de feliz aniversário com brinde.
--- (Assumindo que o campo data_nascimento foi tratado)
-SELECT
-    ClienteID,
-    Nome,
-    Email,
-    DataNascimento
-FROM
-    Clientes_Limpos
-WHERE
-    MONTH(DataNascimento) = MONTH(CURDATE());
+```
